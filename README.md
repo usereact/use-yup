@@ -12,7 +12,7 @@ npm install --save @usereact/use-yup
 
 ## Usage
 
-``tsx
+```tsx
 import React, { useState } from 'react'
 import useYup from '@usereact/use-yup'
 
