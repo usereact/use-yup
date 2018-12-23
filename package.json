@@ -1,0 +1,33 @@
+{
+  "name": "@usereact/use-yup",
+  "version": "1.0.0",
+  "description": "react hook for yup validations",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usereact/use-yup.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/usereact/use-yup/issues"
+  },
+  "homepage": "https://github.com/usereact/use-yup#readme",
+  "peerDependencies": {
+    "react": "^16.7.0-alpha.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.18",
+    "@types/yup": "^0.26.3",
+    "react": "16.7.0-alpha.2",
+    "typescript": "^3.2.2",
+    "yup": "^0.26.6"
+  }
+}

@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "module": "commonjs",
+      "lib": [
+        "dom",
+        "es2015",
+        "scripthost"
+      ],
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "pretty": true,
+      "declaration": true,
+      "jsx": "preserve",
+      "rootDir": "src",
+      "outDir": "lib"
+    },
+    "exclude": ["lib"]
+  }
