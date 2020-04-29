@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { Schema } from 'yup'
+import { Schema, ValidationError } from 'yup'
 
 type Values = {
   [field: string]: any
@@ -62,7 +62,7 @@ function useYup<T extends Values>(
  * Transform Yup errors to a ValidationErrors object
  */
 function yupToValidationErrors<T extends Values>(
-  yupError: any
+  yupError: ValidationError
 ): ValidationErrors<T> {
   let errors: any = {} as ValidationErrors<Values>
   if (yupError.inner.length === 0) {
@@ -82,6 +82,19 @@ function updateIn(obj: any, path: string, value: any): any {
     if (pathArray[i] in destinationObject === false) {
       destinationObject[pathArray[i]] = {}
     }
+    if (RegExp(/\[([^)]+)\]/).exec(pathArray[i])) {
+      const [relativePath, index] = pathArray[i].split('[')
+      const p = Number(index.split(']')[0])
+
+      if (!Array.isArray(destinationObject[relativePath])) {
+        destinationObject[relativePath] = []
+      }
+
+      if (!isNaN(p)) {
+        destinationObject[relativePath][p] = destinationObject[pathArray[i]]
+      }
+    }
+
     destinationObject = destinationObject[pathArray[i]]
   }
   destinationObject[pathArray[pathArray.length - 1]] = value
