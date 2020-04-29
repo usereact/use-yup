@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { Schema } from 'yup'
+import { Schema, ValidationError } from 'yup'
 
 type Values = {
   [field: string]: any
@@ -62,7 +62,7 @@ function useYup<T extends Values>(
  * Transform Yup errors to a ValidationErrors object
  */
 function yupToValidationErrors<T extends Values>(
-  yupError: any
+  yupError: ValidationError
 ): ValidationErrors<T> {
   let errors: any = {} as ValidationErrors<Values>
   if (yupError.inner.length === 0) {
