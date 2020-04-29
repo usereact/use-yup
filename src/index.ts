@@ -83,14 +83,18 @@ function updateIn(obj: any, path: string, value: any): any {
       destinationObject[pathArray[i]] = {}
     }
     if (RegExp(/\[([^)]+)\]/).exec(pathArray[i])) {
-
       const [relativePath, index] = pathArray[i].split('[')
-      const p = Number(index.split("]")[0])
+      const p = Number(index.split(']')[0])
+
+      if (!Array.isArray(destinationObject[relativePath])) {
+        destinationObject[relativePath] = []
+      }
 
       if (!isNaN(p)) {
-        destinationObject[relativePath] = [destinationObject[pathArray[(p)]]]
+        destinationObject[relativePath][p] = destinationObject[pathArray[i]]
       }
     }
+
     destinationObject = destinationObject[pathArray[i]]
   }
   destinationObject[pathArray[pathArray.length - 1]] = value
