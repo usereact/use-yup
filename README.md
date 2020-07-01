@@ -14,6 +14,7 @@ npm install --save @usereact/use-yup
 
 ```tsx
 import React, { useState } from 'react'
+import * as yup from 'yup'
 import useYup from '@usereact/use-yup'
 
 const validationSchema = yup.object().shape({
